@@ -1,0 +1,33 @@
+[
+  {
+    "Id":1,
+    "name":"Dale Street",
+    "Type":"House",
+    "Price":12000
+  },
+  {
+    "Id":2,
+    "name":"Darly Street",
+    "Type":"House",
+    "Price":12000
+  },
+  {
+    "Id":3,
+    "name":"Derwent Street",
+    "Type":"House",
+    "Price":12000
+  },
+  {
+    "Id":4,
+    "name":"Burner Street",
+    "Type":"House",
+    "Price":12000
+  },
+  {
+    "Id":5,
+    "name":"Mere Road",
+    "Type":"House",
+    "Price":12000
+  }
+
+]

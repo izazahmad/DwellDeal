@@ -1,12 +1,19 @@
-<div class="row">
-  <div class="shadow-lg col-sm-3 p-3">
-    <div class="card">
-      <img class="dwellImg" src="assets/images/Dwell_Default.png" alt="">
-      <div class="card-body p-2">
-        <h1>{{Property.name}}</h1>
-        <h2>{{Property.Type}}</h2>
-        <h3>{{Property.Price}}</h3>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" src="assets/images/Dwell_Default.png" alt="">
+    <ul class="list-inline text-center member-icons animate">
+      <li class="list-inline-item">
+        <button class="btn btn-primary"><i class="fas fa-pen-square"></i></button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary"><i class="fas fa-address-book"></i></button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-body p-2">
+    <h1>{{property.name}}</h1>
+    <h2>{{property.Type}}</h2>
+    <h3>{{property.Price}}</h3>
   </div>
 </div>

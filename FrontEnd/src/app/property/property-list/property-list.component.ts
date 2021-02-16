@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyListComponent implements OnInit {
 
-  constructor() { }
+  //properties: Array<any> = [];
+  properties: any;
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get('data/properties.json').subscribe(
+      data=>{
+        this.properties=data;
+        console.log(data)
+      }
+    );
   }
 
 }
