@@ -1,31 +1,40 @@
 [
   {
     "Id":1,
-    "name":"Dale Street",
+    "SellRent":1,
+    "Name":"Dale Street",
     "Type":"House",
-    "Price":12000
+    "Price":12000,
+    "Image":"prop-1"
   },
   {
     "Id":2,
-    "name":"Darly Street",
+    "SellRent":1,
+    "Name":"Darly Street",
     "Type":"House",
-    "Price":12000
+    "Price":12000,
+    "Image":"prop-2"
   },
   {
     "Id":3,
-    "name":"Derwent Street",
+    "SellRent":2,
+    "Name":"Derwent Street",
     "Type":"House",
-    "Price":12000
+    "Price":12000,
+    "Image":"prop-3"
   },
   {
     "Id":4,
-    "name":"Burner Street",
+    "SellRent":1,
+    "Name":"Burner Street",
     "Type":"House",
-    "Price":12000
+    "Price":12000,
+    "Image":"prop-4"
   },
   {
     "Id":5,
-    "name":"Mere Road",
+    "SellRent":2,
+    "Name":"Mere Road",
     "Type":"House",
     "Price":12000
   }
