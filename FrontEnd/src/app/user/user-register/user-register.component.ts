@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-user-register',
@@ -9,8 +12,9 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 export class UserRegisterComponent implements OnInit {
 
   registerationForm !: FormGroup;
-  user: any = {}
-  constructor(private fb: FormBuilder) { }
+  user !: User;
+  userSubmitted !: boolean;
+  constructor(private fb: FormBuilder, private userService: UserServiceService, private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     //this.registerationForm= new FormGroup({
@@ -60,21 +64,36 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registerationForm.value);
-    this.user=Object.assign(this.user,this.registerationForm.value);
-    this.addUser(this.user);
-    this.registerationForm.reset();
+    this.userSubmitted=true;
+    if(this.registerationForm.valid){
+    //this.user=Object.assign(this.user,this.registerationForm.value);
+      this.userService.addUser(this.userData());
+      this.registerationForm.reset();
+      this.userSubmitted=false;
+      this.alertify.success("You are Successfully Registered.");
+    } else {
+      this.alertify.error("Provide required fields.");
+    }
+  }
+  userData(): User {
+    return this.user={
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,
+      mobile: this.mobile.value
+    }
   }
 
-  addUser(user: any) {
-    let users=[];
-    if(localStorage.getItem('Users')) {
-      users=JSON.parse(localStorage.getItem('Users') || '{}');
-      users=[user, ...users];
-    }
-    else {
-      users=[user];
-    }
-    localStorage.setItem('Users',JSON.stringify(users));
-  }
+  // addUser(user: any) {
+  //   let users=[];
+  //   if(localStorage.getItem('Users')) {
+  //     users=JSON.parse(localStorage.getItem('Users') || '{}');
+  //     users=[user, ...users];
+  //   }
+  //   else {
+  //     users=[user];
+  //   }
+  //   localStorage.setItem('Users',JSON.stringify(users));
+  // }
 
 }
