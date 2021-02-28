@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IProperty } from '../property/iProperty.interface';
 import { Observable } from 'rxjs';
+import { IPropertyBase } from '../model/ipropertybase';
+import { IProperty } from '../model/Iproperty';
 
 
 @Injectable({
