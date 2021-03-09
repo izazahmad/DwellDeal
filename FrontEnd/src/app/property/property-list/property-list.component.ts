@@ -16,6 +16,9 @@ export class PropertyListComponent implements OnInit {
   //properties: any;
   SellRent=1;
   properties: IPropertyBase[] | undefined;
+  Today= new Date();
+
+
   constructor(private route: ActivatedRoute, private dwellingService: DwellingService) { }
 
   ngOnInit(): void {
