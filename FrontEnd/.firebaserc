@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dwell-deal"
+  },
+  "targets": {
+    "dwell-deal": {
+      "hosting": {
+        "DwellDeal": [
+          "dwell-deal"
+        ]
+      }
+    }
+  }
+}

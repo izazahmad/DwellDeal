@@ -172,7 +172,7 @@
                 <div class="form-group col-12">
                   <p>Main Entrance</p>
                   <div class="btn-group" btnRadioGroup>
-                    <label *ngFor="let mainentrnc of mainEntrance" class="btn btn-outline-primary mr-2" btnRadio = "mainentrnc" role="button" formControlName="MainEntrance" tabindex="0">
+                    <label *ngFor="let mainentrnc of mainEntrance" class="btn btn-outline-primary mr-2" [btnRadio] = "mainentrnc" role="button" formControlName="MainEntrance" tabindex="0">
                       {{mainentrnc}}</label>
 
                   </div>
