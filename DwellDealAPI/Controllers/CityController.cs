@@ -18,7 +18,7 @@ namespace DwellDealAPI.Controllers
         [HttpGet("")]
         public IEnumerable<string> Getstrings()
         {
-            return new string[] { "ghhjjj","London","Leiceter","Manchester"};
+            return new string[] { "Loughbrough","London","Leiceter","Manchester"};
         }
     }
 }

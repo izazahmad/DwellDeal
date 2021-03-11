@@ -9,6 +9,10 @@ import { Property } from '../model/property';
 })
 export class DwellingService {
   constructor(private http: HttpClient) {}
+
+  getAllCities(): Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:5000/api/city');
+  }
   getProperty(id: number) {
     return this.getAllProperties().pipe(
       map(propertiesArray=> {
@@ -28,7 +32,7 @@ export class DwellingService {
             if (SellRent) {
               if (
                 localProperties.hasOwnProperty(id) &&
-                (localProperties as any)[id].SellRent === SellRent
+                (localProperties as any)[id]?.SellRent === SellRent
               ) {
                 propertiesArray.push((localProperties as any)[id]);
               }

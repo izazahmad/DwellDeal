@@ -52,6 +52,9 @@ export class AddPropertyComponent implements OnInit {
       this.addPropertyForm.controls['Name'].setValue('Name');
     }); */
     this.CreateAddPropertyForm();
+    this.housingService.getAllCities().subscribe(data=> {
+      console.log(data);
+    });
   }
 
   CreateAddPropertyForm() {
