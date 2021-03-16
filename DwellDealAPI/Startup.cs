@@ -2,9 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DwellDealAPI.Data;
+using DwellDealAPI.Data.Repo;
+using DwellDealAPI.Helpers;
+using DwellDealAPI.interfaces;
+using DwellDealAPI.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,8 +31,11 @@ namespace DwellDealAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<DataContext>(optionsAction=> optionsAction.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddControllers();
+            services.AddCors();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DwellDealAPI", Version = "v1" });
@@ -44,6 +53,8 @@ namespace DwellDealAPI
             }
 
             app.UseRouting();
+            
+            app.UseCors(m=>m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthorization();
 

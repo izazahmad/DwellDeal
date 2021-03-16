@@ -57,7 +57,13 @@
 
                 <div class="form-group col-12">
                   <label>City</label>
-                  <input type="text" class="form-control" formControlName="City" [(ngModel)]="propertyView.City">
+                  <select type="text" class="form-control" formControlName="City" [(ngModel)]="propertyView.City">
+                    <option value="">--Select City--</option>
+                    <option *ngFor="let city of cityList" value="{{city.id}}">
+                      {{city.name}}
+                    </option>
+                  </select>
+                  <div class="error-block" *ngIf="City.invalid && (NextClicked || City.touched)">Please Select City</div>
                 </div>
 
                 <div class="form-group col-12">
@@ -72,7 +78,7 @@
                   <input type="text" class="form-control" formControlName='Price' [(ngModel)]="propertyView.Price">
                   <div class="error-block" *ngIf="Price.invalid && (NextClicked || Price.touched)">
                     Please Enter
-                    <span *ngIf="SellRent.value==1";else ShowRent>Sell Price</span>
+                    <span *ngIf="SellRent.value==1"else ShowRent>Sell Price</span>
                     <ng-template #ShowRent>Rent Price</ng-template>
                   </div>
                 </div>
@@ -149,7 +155,7 @@
                   <input type="text"
                placeholder="Datepicker"
                class="form-control"
-               bsDatepicker [bsConfig]="{containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY'}">
+               bsDatepicker [bsConfig]="{containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY'}" formControlName="PossessionOn">
                 </div>
 
                 <div class="form-group col-12">
@@ -171,8 +177,8 @@
 
                 <div class="form-group col-12">
                   <p>Main Entrance</p>
-                  <div class="btn-group" btnRadioGroup>
-                    <label *ngFor="let mainentrnc of mainEntrance" class="btn btn-outline-primary mr-2" [btnRadio] = "mainentrnc" role="button" formControlName="MainEntrance" tabindex="0">
+                  <div class="btn-group" btnRadioGroup formControlName="MainEntrance">
+                    <label *ngFor="let mainentrnc of mainEntrance" class="btn btn-outline-primary mr-2" [btnRadio] = "mainentrnc" role="button" tabindex="0">
                       {{mainentrnc}}</label>
 
                   </div>

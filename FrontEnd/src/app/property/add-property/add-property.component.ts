@@ -19,12 +19,13 @@ export class AddPropertyComponent implements OnInit {
   //@ViewChild('Form') addPropertyForm !: FormGroup;
   addPropertyForm !: FormGroup;
   NextClicked !: boolean;
-  property= new Property();
+  property = new Property();
 
   propertyTypes: Array<string> = ['Flats','Terraced','End-Terrace','Detached','Semi-detached','Cottage','Bungalows']
   furnishTypes: Array<string> = ['Fully','Semi','Unfurnished']
   mainEntrance: Array<string> = ['East','West','South','North']
   bhkSize: Array<number> = [1,2,3,4]
+  cityList!:any[];
 
   propertyView: IPropertyBase = {
     Id : null as any,
@@ -35,7 +36,7 @@ export class AddPropertyComponent implements OnInit {
     FType: null as any,
     BHK: null as any,
     BuiltArea: null as any,
-    City: null as any,
+    City: '',
     RTM: null as any
   };
 
@@ -53,6 +54,7 @@ export class AddPropertyComponent implements OnInit {
     }); */
     this.CreateAddPropertyForm();
     this.housingService.getAllCities().subscribe(data=> {
+      this.cityList=data;
       console.log(data);
     });
   }
@@ -186,7 +188,9 @@ export class AddPropertyComponent implements OnInit {
 
    if (this.tabsValidation()) {
      this.mapProperty();
+     console.log(this.property);
      this.housingService.addProperty(this.property);
+     //this.housingService.addProperty(this.mapProperty());
     this.alertify.success("Congrats, Property Listed Successfully");
     //console.log('SellRent=' + this.addPropertyForm?.value.BasicInfo.SellRent);
     console.log(this.addPropertyForm);

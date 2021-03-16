@@ -61,16 +61,16 @@ export class DwellingService {
   }
 
   addProperty(property: Property) {
-    let newProp = [property];
+    let newprop = [property];
+
     //adding new property in array if newProp already exists in local storage
     if (localStorage.getItem('newProp')) {
-      newProp = [
-        property,
-        ...JSON.parse(localStorage.getItem('newProp') || '{}'),
-      ];
+      newprop=JSON.parse(localStorage.getItem('newProp') || '');
+      newprop = [ property, ...newprop];
     }
-    localStorage.setItem('newProp', JSON.stringify(property));
+    localStorage.setItem('newProp', JSON.stringify(newprop));
   }
+
   newPropID() {
     if (localStorage.getItem('PID')) {
       localStorage.setItem(
